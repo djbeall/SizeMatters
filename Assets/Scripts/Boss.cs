@@ -19,4 +19,14 @@ public class Boss : MonoBehaviour
 		Vector2 dir = player.transform.position - transform.position;
         rb.AddForce(dir.normalized * 5);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            Vector2 force = transform.position - collision.transform.position;
+            force.Normalize();
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-force * (transform.localScale.x * 5), ForceMode2D.Impulse);
+        }
+    }
 }
