@@ -26,7 +26,7 @@ public class Boss : MonoBehaviour
         {
             Vector2 force = transform.position - collision.transform.position;
             force.Normalize();
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-force * (transform.localScale.x * 5), ForceMode2D.Impulse);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-force * (Mathf.Pow(transform.localScale.x, 3)), ForceMode2D.Impulse);
         }
     }
 }
