@@ -55,6 +55,15 @@ public class Player : MonoBehaviour
             grounded = false;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Pickup")
+        {
+            float increase = collision.gameObject.GetComponent<Food>().sizeIncrease;
+            transform.localScale += new Vector3(increase, increase, increase);
+        }
+    }
+
     IEnumerator JumpRoutine()
     {
         float timer = 0;
