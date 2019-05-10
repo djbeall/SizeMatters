@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerTutorial : MonoBehaviour
 {
     Rigidbody2D rb;
     private bool jumping;
     private bool grounded;
     private bool canMove;
     private float jumpTime;
-	public float speed;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +23,14 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         rb.mass = transform.localScale.x;
-		if(Input.GetKeyDown("space") && grounded) {
+        if (Input.GetKeyDown("space") && grounded)
+        {
             jumping = true;
             StartCoroutine(JumpRoutine());
         }
         float moveHorizontal = Input.GetAxis("Horizontal");
 
-        if(canMove)
+        if (canMove)
             rb.AddForce(Vector2.right * moveHorizontal * speed * (transform.localScale.x));
     }
 
@@ -77,5 +78,4 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         canMove = true;
     }
-
 }
