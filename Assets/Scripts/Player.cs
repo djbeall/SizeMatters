@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        jumping = false;
         jumpTime = .1f;
         grounded = false;
         canMove = true;
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         rb.mass = transform.localScale.x;
-		if(Input.GetKeyDown("space") && grounded) {
+		if(Input.GetKeyDown("space") && grounded && !jumping) {
             jumping = true;
             StartCoroutine(JumpRoutine());
         }

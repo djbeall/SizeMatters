@@ -6,6 +6,7 @@ public class Boss : MonoBehaviour
 {
 	GameObject player;
 	Rigidbody2D rb;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,7 @@ public class Boss : MonoBehaviour
     void FixedUpdate()
     {
 		Vector2 dir = player.transform.position - transform.position;
-        rb.AddForce(dir.normalized * 5);
+        rb.AddForce(dir.normalized * 5 * speed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
