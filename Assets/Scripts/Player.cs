@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         while (Input.GetKey("space") && timer < jumpTime)
         {
             float proportionCompleted = timer / jumpTime;
-            Vector2 thisFrameJumpVector = Vector2.Lerp(Vector2.up * 115, Vector2.zero, proportionCompleted);
+            Vector2 thisFrameJumpVector = Vector2.Lerp(Vector2.up * 120 * transform.localScale.x, Vector2.zero, proportionCompleted);
             rb.AddForce(thisFrameJumpVector);
             timer += Time.deltaTime;
             yield return null;
