@@ -10,9 +10,13 @@ public class Player : MonoBehaviour
     private bool canMove;
     private float jumpTime;
 	public float speed;
-    // Start is called before the first frame update
+    private AudioSource jumpSound;
+    private AudioSource collisionSound;
+
     void Start()
     {
+        collisionSound = GameObject.Find("CollisionSound").GetComponent<AudioSource>();
+        jumpSound = GameObject.Find("JumpSound").GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         jumping = false;
         jumpTime = .1f;
@@ -42,7 +46,7 @@ public class Player : MonoBehaviour
             grounded = true;
         if (collision.gameObject.name == "Boss")
         {
-            //Debug.Log("Here");
+            collisionSound.Play();
             StartCoroutine(MoveWait());
             Vector2 force = transform.position - collision.transform.position;
             force.Normalize();
@@ -68,7 +72,7 @@ public class Player : MonoBehaviour
     IEnumerator JumpRoutine()
     {
         float timer = 0;
-
+        jumpSound.Play();
         while (Input.GetKey("space") && timer < jumpTime)
         {
             float proportionCompleted = timer / jumpTime;
