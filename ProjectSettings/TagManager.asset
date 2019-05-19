@@ -7,6 +7,8 @@ TagManager:
   - Fire
   - Terrain
   - Pickup
+  - Border
+  - Goal
   layers:
   - Default
   - TransparentFX
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: tiles
     uniqueID: 2579353643
+    locked: 0
+  - name: food
+    uniqueID: 1890096255
     locked: 0
   - name: player
     uniqueID: 3468426963

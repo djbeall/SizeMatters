@@ -8,6 +8,7 @@ public class Net : MonoBehaviour
 {
     public Canvas canvas;
     public Text text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +57,6 @@ public class Net : MonoBehaviour
                 text.text = "You Win!!";
             StartCoroutine(Wait());
         }
-
     }
 
     private void Restart()
