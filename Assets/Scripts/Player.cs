@@ -26,6 +26,13 @@ public class Player : MonoBehaviour
         canMove = true;
     }
 
+    private void Update()
+    {
+        var pos = Camera.main.WorldToViewportPoint(transform.position);
+        pos.x = Mathf.Clamp(pos.x, -0.1f, 1.0f);
+        transform.position = Camera.main.ViewportToWorldPoint(pos);
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
